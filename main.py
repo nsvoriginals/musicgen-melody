@@ -9,7 +9,7 @@ import base64
 # Function to load the pretrained model
 @st.cache_resource
 def load_model():
-    model = MusicGen.get_pretrained('facebook/musicgen-melody')
+    model = MusicGen.get_pretrained('facebook/musicgen-small')
     return model
 
 # Function to generate music tensors based on description and duration
@@ -92,7 +92,7 @@ def main():
 
     # Text input and slider
     text_area = st.text_area("Enter your description.......")
-    time_slider = st.slider("Select time duration (In Seconds)", 0, 60, 10)
+    time_slider = st.slider("Select time duration (In Seconds)", 0, 20, 10)
 
     # Generate music and display audio player
     if text_area and time_slider:
