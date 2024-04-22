@@ -9,7 +9,7 @@ import base64
 # Function to load the pretrained model
 @st.cache_resource
 def load_model():
-    model = MusicGen.get_pretrained('facebook/musicgen-small')
+    model = MusicGen.get_pretrained('facebook/musicgen-melody')
     return model
 
 # Function to generate music tensors based on description and duration
