@@ -36,6 +36,7 @@ def get_audiocraft_cache_dir() -> tp.Optional[str]:
     return os.environ.get('AUDIOCRAFT_CACHE_DIR', None)
 
 
+
 def _get_state_dict(
     file_or_url_or_id: tp.Union[Path, str],
     filename: tp.Optional[str] = None,
@@ -62,10 +63,8 @@ def _get_state_dict(
         assert filename is not None, "filename needs to be defined if using HF checkpoints"
 
         file = hf_hub_download(
-            repo_id=file_or_url_or_id, filename=filename, cache_dir=cache_dir,
-            library_name="audiocraft", library_version=audiocraft.__version__)
+            repo_id=file_or_url_or_id, filename=filename, cache_dir=cache_dir)
         return torch.load(file, map_location=device)
-
 
 def load_compression_model_ckpt(file_or_url_or_id: tp.Union[Path, str], cache_dir: tp.Optional[str] = None):
     return _get_state_dict(file_or_url_or_id, filename="compression_state_dict.bin", cache_dir=cache_dir)
